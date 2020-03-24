@@ -1,0 +1,25 @@
+<included>
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>./logs/workflow2-api-backend.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>./logs/workflow2-api-backend.%d{yyyy-MM-dd}.log
+      </fileNamePattern>
+
+      <!-- keep 30 days' worth of history -->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%d %-5p %-30.30c{1} - %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.springframework" level="ERROR" />
+  <logger name="com.peplink.ecommerce" level="INFO" />
+
+  <root level="INFO">
+    <appender-ref ref="FILE" />
+  </root>
+
+</included>
